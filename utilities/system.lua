@@ -52,9 +52,9 @@ function GetFilesRecursive(dir, filter)
 end
 
 function GetDirPath(file_path)
-    -- Determine the directory separator based on the platform
-    local dir_sep = package.config:sub(1, 1) == "\\" and "\\" or "/"
+	-- Determine the directory separator based on the platform
+	local dir_sep = package.config:sub(1, 1) == "\\" and "\\" or "/"
 
-    -- Match the directory part of the file path
-    return file_path:match("(.*" .. dir_sep .. ")") or "./"
+	-- Match the directory part of the file path
+	return file_path:match("(.*" .. dir_sep .. ")") or "./"
 end

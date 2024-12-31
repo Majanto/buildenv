@@ -7,10 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+<!-- ### Added -->
+<!-- ### Changed -->
+<!-- ### Removed -->
+
+## [0.2] 2024-12-31
+
+### Added
+- Lib support, with a way to override it for a precompiled library
+- Project inheritance
+
+### Changed
+- Project files description
+
 ## [0.1] 2024-12-08
 
 ### Added
 - Generate Visual Studio C++ exe application, Windows only
-
-<!-- ### Changed -->
-<!-- ### Removed -->
