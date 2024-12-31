@@ -43,8 +43,8 @@ function Call(obj, func, ...)
 	args_tostring = ''
 	for i, v in ipairs(args) do
 		if i > 1 then args_tostring = args_tostring .. ', ' end
-        args_tostring = args_tostring .. tostring(v)
-    end
+		args_tostring = args_tostring .. tostring(v)
+	end
 	Debug('Calling ' .. func .. '(' .. args_tostring ..') for ' .. obj.name)
 	Debug_IncrTab()
 	Recursive(obj)
@@ -62,7 +62,7 @@ end
 
 function Debug(info)
 	local tabs = string.rep("  ", tabCount)
-	print('DEBUG: ' .. tabs .. info)
+	--print('DEBUG: ' .. tabs .. info)
 end
 
 function Stop(info)

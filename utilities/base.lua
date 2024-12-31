@@ -5,8 +5,6 @@ function Base:Init()
 end
 
 function Base:Setup()
-	Unsure(self, 'name', 'parent', 'dir')
-
 	project(self.name).group = self.filter
 	location(GetProjectLocation(self.name))
 	language('C++')

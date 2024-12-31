@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Lib support, with a way to override it for a precompiled library
 - Project inheritance
+- Some ways to debug
 
 ### Changed
 - Project files description
