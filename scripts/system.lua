@@ -1,40 +1,42 @@
-local platform_windows = 'Windows'
-local platform_linux = 'Linux'
-local platform_macos = 'Mac OS'
+System = {}
 
-function GetPlatform()
+System.windows = 'Windows'
+System.linux = 'Linux'
+System.macos = 'Mac OS'
+
+function System:platform()
 	-- Standard Lua method
 	local dir_sep = package.config:sub(1, 1)
 	if dir_sep == '\\' then
-		return platform_windows
+		return System.windows
 	else
 		-- Use uname command to further distinguish macOS from Linux
 		local uname_output = io.popen('uname'):read('*l')
 		if uname_output == 'Darwin' then
-			return platform_macos
+			return System.macos
 		else
-			return platform_linux
+			return System.linux
 		end
 	end
 end
 
-function IsWindows()
-	return GetPlatform() == platform_windows
+function System:is_windows()
+	return System:platform() == System.windows
 end
 
-function IsLinux()
-	return GetPlatform() == platform_linux
+function System:is_linux()
+	return System:platform() == System.linux
 end
 
-function IsMacOS()
-	return GetPlatform() == platform_macos
+function System:is_macos()
+	return System:platform() == System.macos
 end
 
-function GetFilesRecursive(dir, filter)
+function System:get_files_recursive(dir, filter)
 	local files = {}
 	-- Command for listing files depending on the platform
 	local command
-	if IsWindows() then
+	if System:is_windows() then
 		command = 'dir "' .. dir .. '" /S /B /A-D' -- Windows
 	else
 		command = 'find "' .. dir .. '" -type f' -- Unix-like systems (Linux, macOS)
@@ -51,10 +53,22 @@ function GetFilesRecursive(dir, filter)
 	return files
 end
 
-function GetDirPath(file_path)
+function System:get_dir_path(file_path)
 	-- Determine the directory separator based on the platform
 	local dir_sep = package.config:sub(1, 1) == "\\" and "\\" or "/"
 
 	-- Match the directory part of the file path
 	return file_path:match("(.*" .. dir_sep .. ")") or "./"
+end
+
+function System:stop(info)
+	print('Error: ' .. info)
+	print('Early stop.')
+	os.exit()
+end
+
+function System:stop_if(test, info)
+	if test then
+		System:stop(info)
+	end
 end

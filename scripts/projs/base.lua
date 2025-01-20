@@ -1,10 +1,9 @@
-Base = Declare('Base')
-Debug(Base.name .. ' is ' .. tostring(Base))
+Base = proj:register('Base')
 
-function Base:Init()
+function Base:init()
 end
 
-function Base:Setup()
+function Base:setup()
 	project(self.name).group = self.filter
 	location(GetProjectLocation(self.name))
 	language('C++')
@@ -27,6 +26,6 @@ function Base:Setup()
 	includedirs { self.dir }
 end
 
-function Base:AddDependencies(other)
+function Base:add_dependencies(other)
 	dependson { self.name }
 end

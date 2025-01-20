@@ -1,14 +1,14 @@
-Lib = Declare('Lib')
+Lib = proj:register('Lib')
 
-function Lib:Init()
+function Lib:init()
 	self.parent = Base
 end
 
-function Lib:Setup()
+function Lib:setup()
 	kind('StaticLib')
 end
 
-function Lib:AddDependencies(other)
+function Lib:add_dependencies(other)
 	if self.precompiled == nil or self.precompiled == false then
 		links { self.name .. '.lib' }
 		libdirs { GetProjectTargetDir(self.name) }
