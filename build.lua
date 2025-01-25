@@ -1,25 +1,25 @@
-require('utilities/premake_args.lua')
+include('utilities/premake_args.lua')
 
-require('utilities/system.lua')
-require('utilities/env.lua')
-require('utilities/base.lua')
-require('utilities/lib.lua')
-require('utilities/app.lua')
+include('utilities/system.lua')
+include('utilities/env.lua')
+include('utilities/base.lua')
+include('utilities/lib.lua')
+include('utilities/app.lua')
 
 -- Root
 env.root = _OPTIONS['root']
 StopIf(env.root == nil, 'Missing root path')
 
 -- Paths after root
-require('utilities/paths.lua')
+include('utilities/paths.lua')
 
 -- Global config
-require(env.config_file)
+include(env.config_file)
 StopIf(env.config == nil, 'Missing config')
 
 -- Loading project configs
 for i, file in ipairs(GetFilesRecursive(env.code_dir, '%.lua$')) do
-	require(file)
+	include(file)
 	env.projects[#env.projects].dir = GetDirPath(file)
 end
 
