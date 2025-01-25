@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-<!-- ### Added -->
+### Added
+- Can now set Starting Project from the main config.lua
+
 <!-- ### Changed -->
 <!-- ### Removed -->
 
