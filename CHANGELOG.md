@@ -10,7 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Can now set Starting Project from the main config.lua
 
-<!-- ### Changed -->
+### Changed
+- Replaced calls to 'include' by 'replace'
+
 <!-- ### Removed -->
 
 ## [0.2] 2024-12-31
