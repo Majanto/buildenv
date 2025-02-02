@@ -6,6 +6,7 @@ A series of lua scripts based on [Premake5](https://premake.github.io/) to gener
 ```lua
 env.config = {}
 env.config.name = 'SolutionName'
+env.config.start = 'Demo'
 ```
 
 - In ***./code/***, create ***XXX.lua***:

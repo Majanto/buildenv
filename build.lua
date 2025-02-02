@@ -31,6 +31,7 @@ end
 -- TODO: make this be the global config file
 -- Setup solution
 workspace(env.config.name)
+startproject(env.config.start)
 location(env.solution_dir)
 configurations { 'Debug', 'Release' }
 architecture('x64')
