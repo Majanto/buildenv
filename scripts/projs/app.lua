@@ -1,9 +1,9 @@
-App = proj:register('App')
+App = Proj:register('App')
 
 function App:init()
 	self.parent = Base
 end
 
-function App:setup()
+function App:setup_project()
 	kind('ConsoleApp')
 end

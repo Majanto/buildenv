@@ -1,20 +1,20 @@
-Base = proj:register('Base')
+Base = Proj:register('Base')
 
 function Base:init()
 end
 
-function Base:setup()
+function Base:setup_project()
 	project(self.name).group = self.filter
-	location(GetProjectLocation(self.name))
+	location(Config:get_project_location(self.name))
 	language('C++')
 	cppdialect('C++20')
-	objdir(GetProjectObjDir(self.name))
-	targetdir(GetProjectTargetDir(self.name))
+	objdir(Config:get_project_obj_dir(self.name))
+	targetdir(Config:get_project_target_dir(self.name))
 	flags { 'MultiProcessorCompile' }
 
 	if self.dependencies ~= nil then
 		for key, dependence in pairs(self.dependencies) do
-			Call(dependence, 'AddDependencies', self)
+			Proj:call(dependence, 'AddDependencies', self)
 		end
 	end
 	
@@ -24,6 +24,14 @@ function Base:setup()
 		self.dir .. '/**.cpp'
 	}
 	includedirs { self.dir }
+end
+
+function Base:setup_workspace()
+	workspace(self.workspace_name)
+	startproject(self.name)
+	location(Config.solution_dir)
+	configurations { 'Debug', 'Release' }
+	architecture('x64')
 end
 
 function Base:add_dependencies(other)
