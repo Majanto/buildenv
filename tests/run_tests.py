@@ -6,3 +6,4 @@ sys.path.append(buildenv_path)
 import buildenv
 
 buildenv.setup(f'{buildenv_path}/tests/simpleapp', f'Main', f'{buildenv_path}/tests/simpleapp/code')
+buildenv.setup(f'{buildenv_path}/tests/simpleappwithlib', f'Main', f'{buildenv_path}/tests/simpleappwithlib/code')

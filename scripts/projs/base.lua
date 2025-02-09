@@ -14,7 +14,7 @@ function Base:setup_project()
 
 	if self.dependencies ~= nil then
 		for key, dependence in pairs(self.dependencies) do
-			Proj:call(dependence, 'AddDependencies', self)
+			Proj:call(dependence, 'add_dependencies', self)
 		end
 	end
 	

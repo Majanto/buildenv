@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Test project for simple app
+- Test project for simple app with lib
 
 ### Changed
 - buildenv file structure refactored
