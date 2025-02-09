@@ -7,11 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-### Added
-- Can now set Starting Project from the main config.lua
-
+<!-- ### Added -->
 <!-- ### Changed -->
 <!-- ### Removed -->
+
+### Added
+- Test project for simple app
+
+### Changed
+- buildenv file structure refactored
+- No more specific config file for the workspace description. We use a root project with its `setup_workspace` function.
 
 ## [0.2] 2024-12-31
 
