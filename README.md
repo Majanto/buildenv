@@ -1,47 +1,60 @@
 ## What's ***buildenv***?
-A series of lua scripts based on [Premake5](https://premake.github.io/) to generate C++ project
+A series of lua scripts to help describe [Premake5](https://premake.github.io/) projects.
 
 ## Usage
-- In your root folder, create ***config.lua*** (will be reworked at some point):
-```lua
-env.config = {}
-env.config.name = 'SolutionName'
-env.config.start = 'Demo'
-```
 
-- In ***./code/***, create ***XXX.lua***:
+Describe your projects in `.lua` files:
+
 ```lua
-Demo = Register('Demo') -- use 'Declare()' instead if you want a template project (unsupported for now)
+Demo = Proj:register('Demo')
 
 -- init some data used by parents
-function Demo:Init()
+function Demo:init()
 	-- it's important to use 'self' because of inheritance
-	self.parent = App -- set project inheritance, you may also use 'Lib'
-	self.dependencies = { DemoLib } -- use to add dependencies, will call 'AddDependencies()' function on dependence projects
+	self.parent = App -- set project inheritance, you may also use 'Lib' others made by yourself
+	self.dependencies = { DemoLib } -- use to add dependencies, will call 'add_dependencies()' function on dependence projects
 end
 
-function Demo:Setup()
-	-- do some operation specific to your project
+function Demo:setup_project()
+	-- do some Premake operations specific to your project
 end
 
-function Demo:AddDependencies(other)
+function Demo:setup_workspace()
+	-- do some Premake operations specific to your workspace in case this project is used as a root project
+end
+
+function Demo:add_dependencies(other)
 	-- called when 'other' depends on this project
 end
 ```
+###
+Generate your project by running the Python script:
 
-- Run build.py from your project folder.
+```python
+import buildenv.buildenv
+import os
 
-The generated solution is under ***./.generated/projects/visualStudio/***
+working_dir = os.path.dirname(__file__)
+root_project = working_dir
+root_project_name = 'Demo' # project that will be used to setup the workspace
+projects_folder = f'{root_project}/code' # base folder that contain every project config that will be loaded
+
+buildenv.setup(root_project, root_project_name, projects_folder)
+```
+###
+Using proposed project descriptors, the generated solution is under ***[root_project]/.generated/projects/visualStudio/***
 
 ## Features
-- Generate Visual Studio C++ Solution
-- Support .exe and .lib generation
-- Support .lib or custom dependencies
 - Windows only
+- Structure to execute Premake5
+- Supported projects platforms: Windows
+- Write your own project descriptors
+- Use App and Lib descriptors as a base for your projects
+	- Generate Visual Studio C++ Solution
+	- Support .exe and .lib generation
+	- Support .lib or custom dependencies
 
 ## TODO
+- Build from various platform
 - Cross platform support
-- Rework main solution config file to be more user customizable, as project config files
-- Allow user defined template project using ```Declare()``` instead of ```Register()```
-- Reorganize scripts, wrap functions into classes
-- Various improvements
+- Handle project dependencies from existing git repositories

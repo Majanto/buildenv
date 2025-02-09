@@ -11,12 +11,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 <!-- ### Changed -->
 <!-- ### Removed -->
 
+## [0.3] 2025-02-10
+
 ### Added
 - Test project for simple app
 - Test project for simple app with lib
 
 ### Changed
 - buildenv file structure refactored
+- Function wrapped into Classes
 - No more specific config file for the workspace description. We use a root project with its `setup_workspace` function.
 
 ## [0.2] 2024-12-31
