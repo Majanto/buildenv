@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-<!-- ### Added -->
+### Added
+- Added .hpp import for projects using Base
+
 <!-- ### Changed -->
 <!-- ### Removed -->
 

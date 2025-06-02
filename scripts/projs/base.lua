@@ -21,7 +21,8 @@ function Base:setup_project()
 	files {
 		self.dir .. '/**.h',
 		self.dir .. '/**.c',
-		self.dir .. '/**.cpp'
+		self.dir .. '/**.hpp',
+		self.dir .. '/**.cpp',
 	}
 	includedirs { self.dir }
 end
