@@ -10,7 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Added .hpp import for projects using Base
 
-<!-- ### Changed -->
+### Changed
+- Disabled debug prints
+
 <!-- ### Removed -->
 
 ## [0.3] 2025-02-10
