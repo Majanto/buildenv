@@ -12,6 +12,7 @@ function Base:setup_project()
 	targetdir(Config:get_project_target_dir(self.name))
 	flags { 'MultiProcessorCompile' }
 
+	self.registered_dll = {}
 	if self.dependencies ~= nil then
 		for key, dependence in pairs(self.dependencies) do
 			Proj:call(dependence, 'add_dependencies', self)
@@ -37,4 +38,8 @@ end
 
 function Base:add_dependencies(other)
 	dependson { self.name }
+end
+
+function Base:register_dll_copy(path)
+	self.registered_dll[#self.registered_dll+1] = 'robocopy ' .. System:get_dir_path(path) .. ' $(OutputPath) ' .. System:get_file_name(path) .. ' /njh /njs' --' /ndl /njh /njs /nc /ns' -- /np /nfl
 end

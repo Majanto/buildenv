@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Added .hpp import for projects using Base
 - Added function to extract file name from a path
+- Added Base:register_dll_copy so App may setup postbuildcommands and copy dlls
 
 ### Changed
 - Disabled debug prints
