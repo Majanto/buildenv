@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Added .hpp import for projects using Base
+- Added function to extract file name from a path
 
 ### Changed
 - Disabled debug prints

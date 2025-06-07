@@ -61,6 +61,10 @@ function System:get_dir_path(file_path)
 	return file_path:match("(.*" .. dir_sep .. ")") or "./"
 end
 
+function System:get_file_name(file_path)
+	return file_path:match("^.+[\\/](.+)$") or file_path
+end
+
 function System:stop(info)
 	print('Error: ' .. info)
 	print('Early stop.')
